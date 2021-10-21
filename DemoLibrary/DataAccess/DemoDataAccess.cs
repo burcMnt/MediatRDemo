@@ -35,5 +35,11 @@ namespace DemoLibrary.DataAccess
             PersonModel p = people.Find(x => x.Id == id);
             people.Remove(p);
         }
+
+        public PersonModel GetById(int id)
+        {
+            PersonModel p = people.Find(x => x.Id == id);
+            return p;
+        }
     }
 }

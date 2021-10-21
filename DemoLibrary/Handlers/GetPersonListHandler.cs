@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace DemoLibrary.Handlers
 {
-    public class GetPerdonListHandler : IRequestHandler<GetPersonListQuery, List<PersonModel>>
+    public class GetPersonListHandler : IRequestHandler<GetPersonListQuery, List<PersonModel>>
     {
         private readonly IDataAccess _data;
 
-        public GetPerdonListHandler(IDataAccess data)
+        public GetPersonListHandler(IDataAccess data)
         {
             _data = data;
         }

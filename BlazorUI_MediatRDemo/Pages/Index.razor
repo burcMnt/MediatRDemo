@@ -18,5 +18,7 @@ Welcome to your new app.
     protected override async Task OnInitializedAsync()
     {
         people = await _mediator.Send(new GetPersonListQuery());
+
+
     }
 }
