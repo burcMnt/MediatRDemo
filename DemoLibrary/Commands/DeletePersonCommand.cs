@@ -8,5 +8,7 @@ using System.Threading.Tasks;
 
 namespace DemoLibrary.Commands
 {
-    public record PostPersonCommand() : IRequest<PersonModel>;
+    public record DeletePersonCommand(int id) : IRequest;
+    
+    
 }

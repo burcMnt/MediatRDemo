@@ -1,4 +1,6 @@
-﻿using DemoLibrary.Models;
+﻿using DemoLibrary.Commands;
+using DemoLibrary.DTOs;
+using DemoLibrary.Models;
 using DemoLibrary.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +34,7 @@ namespace DemoApi.Controllers
             return list;
         }
 
-        // GET api/<PersonController>/5
+        // GET api/<PersonController>/1
         [HttpGet("{id}")]
         public Task<PersonModel> Get(int id)
         {
@@ -41,20 +43,16 @@ namespace DemoApi.Controllers
 
         // POST api/<PersonController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public Task<PersonModel> Post([FromBody]InsertPersonDto person)
         {
+            return _mediator.Send(new InsertPersonCommand(person.FirstName,person.LastName));
         }
 
-        //// PUT api/<PersonController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<PersonController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/<PersonController>/2
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            _mediator.Send(new DeletePersonCommand(id));
+        }
     }
 }
